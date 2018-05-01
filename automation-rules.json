@@ -1,0 +1,707 @@
+{
+  "cloud": true,
+  "rules": [
+    {
+      "id": 39174,
+      "clientKey": "61e361e3-c9e9-3c07-973f-6c97b1c9c251",
+      "name": "Create follow-ups",
+      "state": "ENABLED",
+      "description": null,
+      "canOtherRuleTrigger": false,
+      "notifyOnError": "FIRSTERROR",
+      "authorKey": "vergenzt+jiraadmin",
+      "actorKey": "addon_com.codebarrel.addons.automation.lite",
+      "created": 1521927225477,
+      "updated": 1524596646032,
+      "trigger": {
+        "id": "198089",
+        "component": "TRIGGER",
+        "parentId": null,
+        "schemaVersion": 2,
+        "type": "jira.issue.field.changed",
+        "value": {
+          "synchronous": false,
+          "eventKey": null,
+          "issueEvent": null,
+          "fields": [
+            {
+              "value": "customfield_10028",
+              "type": "field"
+            }
+          ],
+          "actions": []
+        },
+        "children": []
+      },
+      "components": [
+        {
+          "id": "198090",
+          "component": "ACTION",
+          "parentId": null,
+          "schemaVersion": 5,
+          "type": "jira.issue.create",
+          "value": {
+            "operations": [
+              {
+                "fieldId": "summary",
+                "fieldType": "summary",
+                "type": "SET",
+                "value": "{{triggerIssue.Follow-up summary}}"
+              },
+              {
+                "fieldId": "description",
+                "fieldType": "description",
+                "type": "SET",
+                "value": "{{triggerIssue.Follow-up description}}"
+              },
+              {
+                "fieldId": "project",
+                "fieldType": "project",
+                "type": "SET",
+                "value": {
+                  "type": "COPY",
+                  "value": "current"
+                }
+              },
+              {
+                "fieldId": "issuetype",
+                "fieldType": "issuetype",
+                "type": "SET",
+                "value": {
+                  "type": "ID",
+                  "value": "10002"
+                }
+              },
+              {
+                "fieldId": "issuelinks",
+                "fieldType": "issuelinks",
+                "type": "SET",
+                "value": {
+                  "issue": {
+                    "type": "COPY",
+                    "value": "trigger"
+                  },
+                  "linkType": "outward:10203"
+                }
+              },
+              {
+                "fieldId": "customfield_10025",
+                "fieldType": "com.atlassian.jira.plugin.system.customfieldtypes:datepicker",
+                "type": "SET",
+                "value": "{{triggerIssue.Follow-up \"Up Next\" Activation Date}}"
+              },
+              {
+                "fieldId": "customfield_10008",
+                "fieldType": "com.pyxis.greenhopper.jira:gh-epic-link",
+                "type": "SET",
+                "value": {
+                  "type": "COPY",
+                  "value": "trigger"
+                }
+              },
+              {
+                "fieldId": "customfield_10036",
+                "fieldType": "com.atlassian.jira.plugin.system.customfieldtypes:datepicker",
+                "type": "SET",
+                "value": "{{triggerIssue.Follow-up \"To Do\" Activation Date}}"
+              }
+            ],
+            "advancedFields": "",
+            "sendNotifications": false,
+            "useLegacyRendering": false
+          },
+          "children": []
+        }
+      ],
+      "projects": [
+        {
+          "projectId": "10000",
+          "projectTypeKey": "software"
+        }
+      ],
+      "labels": []
+    },
+    {
+      "id": 38416,
+      "clientKey": "61e361e3-c9e9-3c07-973f-6c97b1c9c251",
+      "name": "Recur issues",
+      "state": "ENABLED",
+      "description": null,
+      "canOtherRuleTrigger": false,
+      "notifyOnError": "FIRSTERROR",
+      "authorKey": "admin",
+      "actorKey": "addon_com.codebarrel.addons.automation.lite",
+      "created": 1521571659676,
+      "updated": 1525137797313,
+      "trigger": {
+        "id": "217905",
+        "component": "TRIGGER",
+        "parentId": null,
+        "schemaVersion": 2,
+        "type": "jira.issue.field.changed",
+        "value": {
+          "synchronous": false,
+          "eventKey": null,
+          "issueEvent": null,
+          "fields": [
+            {
+              "value": "customfield_10033",
+              "type": "field"
+            }
+          ],
+          "actions": [
+            "transition"
+          ]
+        },
+        "children": []
+      },
+      "components": [
+        {
+          "id": "194662",
+          "component": "ACTION",
+          "parentId": null,
+          "schemaVersion": 5,
+          "type": "jira.issue.clone",
+          "value": {
+            "operations": [
+              {
+                "fieldId": "project",
+                "fieldType": "project",
+                "type": "SET",
+                "value": {
+                  "type": "COPY",
+                  "value": "current"
+                }
+              },
+              {
+                "fieldId": "issuetype",
+                "fieldType": "issuetype",
+                "type": "SET",
+                "value": {
+                  "type": "COPY",
+                  "value": "current"
+                }
+              },
+              {
+                "fieldId": "summary",
+                "fieldType": "summary",
+                "type": "SET",
+                "value": "{{issue.summary}}"
+              }
+            ],
+            "advancedFields": "{\n    \"update\": {\n        \"issuelinks\": [\n            {\n                \"add\": {\n                    \"type\": {\n                        \"name\": \"Recurrence\"\n                    },\n                    \"outwardIssue\": {\n                        \"key\": \"{{issue.key}}\"\n                    }\n                }\n            }\n        ]\n    }\n}",
+            "sendNotifications": false,
+            "useLegacyRendering": false
+          },
+          "children": []
+        },
+        {
+          "id": "194731",
+          "component": "BRANCH",
+          "parentId": null,
+          "schemaVersion": 1,
+          "type": "jira.issue.related",
+          "value": {
+            "relatedType": "recentlycreated",
+            "jql": "",
+            "linkTypes": [],
+            "onlyUpdatedIssues": false,
+            "processIssuesInBulk": false
+          },
+          "children": [
+            {
+              "id": "194894",
+              "component": "CONDITION",
+              "parentId": "194731",
+              "schemaVersion": 1,
+              "type": "jira.jql.condition",
+              "value": "\"Recurrence Type\" = \"From activated date\"",
+              "children": []
+            },
+            {
+              "id": "194733",
+              "component": "ACTION",
+              "parentId": "194731",
+              "schemaVersion": 5,
+              "type": "jira.issue.edit",
+              "value": {
+                "operations": [
+                  {
+                    "fieldId": "customfield_10025",
+                    "fieldType": "com.atlassian.jira.plugin.system.customfieldtypes:datepicker",
+                    "type": "SET",
+                    "value": "{{#now}}func=plusDays(1){{/}}"
+                  }
+                ],
+                "advancedFields": "",
+                "sendNotifications": false,
+                "useLegacyRendering": false
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "194734",
+          "component": "BRANCH",
+          "parentId": null,
+          "schemaVersion": 1,
+          "type": "jira.issue.related",
+          "value": {
+            "relatedType": "recentlycreated",
+            "jql": "",
+            "linkTypes": [],
+            "onlyUpdatedIssues": false,
+            "processIssuesInBulk": false
+          },
+          "children": [
+            {
+              "id": "194895",
+              "component": "CONDITION",
+              "parentId": "194734",
+              "schemaVersion": 1,
+              "type": "jira.jql.condition",
+              "value": "\"Recurrence Type\" in (EMPTY, \"From resolved date\")",
+              "children": []
+            },
+            {
+              "id": "194736",
+              "component": "ACTION",
+              "parentId": "194734",
+              "schemaVersion": 5,
+              "type": "jira.issue.edit",
+              "value": {
+                "operations": [
+                  {
+                    "fieldId": "customfield_10025",
+                    "fieldType": "com.atlassian.jira.plugin.system.customfieldtypes:datepicker",
+                    "type": "SET",
+                    "value": "{{#triggerIssue.fields.Resolved}}func=plusDays({{triggerIssue.Recurrence Days}}){{/}}"
+                  }
+                ],
+                "advancedFields": "",
+                "sendNotifications": false,
+                "useLegacyRendering": false
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "225028",
+          "component": "BRANCH",
+          "parentId": null,
+          "schemaVersion": 1,
+          "type": "jira.issue.related",
+          "value": {
+            "relatedType": "recentlycreated",
+            "jql": "",
+            "linkTypes": [],
+            "onlyUpdatedIssues": false,
+            "processIssuesInBulk": false
+          },
+          "children": [
+            {
+              "id": "225029",
+              "component": "ACTION",
+              "parentId": "225028",
+              "schemaVersion": 5,
+              "type": "jira.issue.edit",
+              "value": {
+                "operations": [
+                  {
+                    "fieldId": "customfield_10038",
+                    "fieldType": "com.atlassian.jira.plugin.system.customfieldtypes:multicheckboxes",
+                    "type": "SET",
+                    "value": []
+                  }
+                ],
+                "advancedFields": null,
+                "sendNotifications": false,
+                "useLegacyRendering": false
+              },
+              "children": []
+            }
+          ]
+        }
+      ],
+      "projects": [
+        {
+          "projectId": "10000",
+          "projectTypeKey": "software"
+        }
+      ],
+      "labels": []
+    },
+    {
+      "id": 44215,
+      "clientKey": "61e361e3-c9e9-3c07-973f-6c97b1c9c251",
+      "name": "Waiting issues: activate on field change",
+      "state": "ENABLED",
+      "description": null,
+      "canOtherRuleTrigger": true,
+      "notifyOnError": "FIRSTERROR",
+      "authorKey": "vergenzt+jiraadmin",
+      "actorKey": "addon_com.codebarrel.addons.automation.lite",
+      "created": 1524596534359,
+      "updated": 1524599295931,
+      "trigger": {
+        "id": "224980",
+        "component": "TRIGGER",
+        "parentId": null,
+        "schemaVersion": 2,
+        "type": "jira.issue.field.changed",
+        "value": {
+          "synchronous": false,
+          "eventKey": null,
+          "issueEvent": null,
+          "fields": [
+            {
+              "value": "customfield_10036",
+              "type": "field"
+            },
+            {
+              "value": "customfield_10025",
+              "type": "field"
+            }
+          ],
+          "actions": []
+        },
+        "children": []
+      },
+      "components": [
+        {
+          "id": "224981",
+          "component": "BRANCH",
+          "parentId": null,
+          "schemaVersion": 1,
+          "type": "jira.issue.related",
+          "value": {
+            "relatedType": "current",
+            "jql": "",
+            "linkTypes": [],
+            "onlyUpdatedIssues": false,
+            "processIssuesInBulk": false
+          },
+          "children": [
+            {
+              "id": "224982",
+              "component": "CONDITION",
+              "parentId": "224981",
+              "schemaVersion": 1,
+              "type": "jira.jql.condition",
+              "value": "\"\\\"To Do\\\" Activation Date\" > now() OR \"\\\"Up Next\\\" Activation Date\" > now()",
+              "children": []
+            },
+            {
+              "id": "224983",
+              "component": "ACTION",
+              "parentId": "224981",
+              "schemaVersion": 5,
+              "type": "jira.issue.transition",
+              "value": {
+                "operations": [],
+                "advancedFields": null,
+                "sendNotifications": true,
+                "useLegacyRendering": false,
+                "transitionMode": "status",
+                "destinationStatus": {
+                  "type": "ID",
+                  "value": "10004"
+                },
+                "transitionMatch": "",
+                "transition": null,
+                "ignoreConditions": false
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "224984",
+          "component": "BRANCH",
+          "parentId": null,
+          "schemaVersion": 1,
+          "type": "jira.issue.related",
+          "value": {
+            "relatedType": "current",
+            "jql": "",
+            "linkTypes": [],
+            "onlyUpdatedIssues": false,
+            "processIssuesInBulk": false
+          },
+          "children": [
+            {
+              "id": "224985",
+              "component": "CONDITION",
+              "parentId": "224984",
+              "schemaVersion": 1,
+              "type": "jira.jql.condition",
+              "value": "\"\\\"To Do\\\" Activation Date\" <= now()",
+              "children": []
+            },
+            {
+              "id": "224986",
+              "component": "ACTION",
+              "parentId": "224984",
+              "schemaVersion": 5,
+              "type": "jira.issue.transition",
+              "value": {
+                "operations": [],
+                "advancedFields": null,
+                "sendNotifications": true,
+                "useLegacyRendering": false,
+                "transitionMode": "status",
+                "destinationStatus": {
+                  "type": "ID",
+                  "value": "10000"
+                },
+                "transitionMatch": "",
+                "transition": null,
+                "ignoreConditions": false
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "224987",
+          "component": "BRANCH",
+          "parentId": null,
+          "schemaVersion": 1,
+          "type": "jira.issue.related",
+          "value": {
+            "relatedType": "current",
+            "jql": "",
+            "linkTypes": [],
+            "onlyUpdatedIssues": false,
+            "processIssuesInBulk": false
+          },
+          "children": [
+            {
+              "id": "224988",
+              "component": "CONDITION",
+              "parentId": "224987",
+              "schemaVersion": 1,
+              "type": "jira.jql.condition",
+              "value": "\"\\\"Up Next\\\" Activation Date\" <= now()",
+              "children": []
+            },
+            {
+              "id": "224989",
+              "component": "ACTION",
+              "parentId": "224987",
+              "schemaVersion": 5,
+              "type": "jira.issue.transition",
+              "value": {
+                "operations": [],
+                "advancedFields": null,
+                "sendNotifications": true,
+                "useLegacyRendering": false,
+                "transitionMode": "status",
+                "destinationStatus": {
+                  "type": "ID",
+                  "value": "10003"
+                },
+                "transitionMatch": "",
+                "transition": null,
+                "ignoreConditions": false
+              },
+              "children": []
+            }
+          ]
+        }
+      ],
+      "projects": [
+        {
+          "projectId": "10000",
+          "projectTypeKey": "software"
+        }
+      ],
+      "labels": []
+    },
+    {
+      "id": 44378,
+      "clientKey": "61e361e3-c9e9-3c07-973f-6c97b1c9c251",
+      "name": "Waiting issues: activate on schedule",
+      "state": "ENABLED",
+      "description": null,
+      "canOtherRuleTrigger": true,
+      "notifyOnError": "FIRSTERROR",
+      "authorKey": "vergenzt+jiraadmin",
+      "actorKey": "addon_com.codebarrel.addons.automation.lite",
+      "created": 1524673957041,
+      "updated": 1524674440770,
+      "trigger": {
+        "id": "225863",
+        "component": "TRIGGER",
+        "parentId": null,
+        "schemaVersion": 1,
+        "type": "jira.jql.scheduled",
+        "value": {
+          "schedule": {
+            "cronExpression": "0 0 12 * * ?",
+            "method": "CRON",
+            "rate": 0,
+            "rateInterval": 86400
+          },
+          "jql": "statusCategory != Done AND (status = Waiting OR \"\\\"Up Next\\\" Activation Date\" is not empty OR \"\\\"To Do\\\" Activation Date\" is not empty)",
+          "executionMode": "jql",
+          "onlyUpdatedIssues": false,
+          "processIssuesInBulk": false
+        },
+        "children": []
+      },
+      "components": [
+        {
+          "id": "225874",
+          "component": "BRANCH",
+          "parentId": null,
+          "schemaVersion": 1,
+          "type": "jira.issue.related",
+          "value": {
+            "relatedType": "current",
+            "jql": "",
+            "linkTypes": [],
+            "onlyUpdatedIssues": false,
+            "processIssuesInBulk": false
+          },
+          "children": [
+            {
+              "id": "225875",
+              "component": "CONDITION",
+              "parentId": "225874",
+              "schemaVersion": 1,
+              "type": "jira.jql.condition",
+              "value": "status != \"To Do\" AND \"\\\"To Do\\\" Activation Date\" <= now()",
+              "children": []
+            },
+            {
+              "id": "225876",
+              "component": "ACTION",
+              "parentId": "225874",
+              "schemaVersion": 5,
+              "type": "jira.issue.transition",
+              "value": {
+                "operations": [],
+                "advancedFields": null,
+                "sendNotifications": true,
+                "useLegacyRendering": false,
+                "transitionMode": "status",
+                "destinationStatus": {
+                  "type": "ID",
+                  "value": "10000"
+                },
+                "transitionMatch": "",
+                "transition": null,
+                "ignoreConditions": false
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "225866",
+          "component": "BRANCH",
+          "parentId": null,
+          "schemaVersion": 1,
+          "type": "jira.issue.related",
+          "value": {
+            "relatedType": "current",
+            "jql": "",
+            "linkTypes": [],
+            "onlyUpdatedIssues": false,
+            "processIssuesInBulk": false
+          },
+          "children": [
+            {
+              "id": "225877",
+              "component": "CONDITION",
+              "parentId": "225866",
+              "schemaVersion": 1,
+              "type": "jira.jql.condition",
+              "value": "status != \"Up Next\" AND \"\\\"Up Next\\\" Activation Date\" <= now()",
+              "children": []
+            },
+            {
+              "id": "225867",
+              "component": "ACTION",
+              "parentId": "225866",
+              "schemaVersion": 5,
+              "type": "jira.issue.transition",
+              "value": {
+                "operations": [],
+                "advancedFields": null,
+                "sendNotifications": true,
+                "useLegacyRendering": false,
+                "transitionMode": "status",
+                "destinationStatus": {
+                  "type": "ID",
+                  "value": "10003"
+                },
+                "transitionMatch": "",
+                "transition": null,
+                "ignoreConditions": false
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "225868",
+          "component": "BRANCH",
+          "parentId": null,
+          "schemaVersion": 1,
+          "type": "jira.issue.related",
+          "value": {
+            "relatedType": "current",
+            "jql": "",
+            "linkTypes": [],
+            "onlyUpdatedIssues": false,
+            "processIssuesInBulk": false
+          },
+          "children": [
+            {
+              "id": "225878",
+              "component": "CONDITION",
+              "parentId": "225868",
+              "schemaVersion": 1,
+              "type": "jira.jql.condition",
+              "value": "status = Waiting AND \"\\\"Up Next\\\" Activation Date\" is EMPTY AND \"\\\"To Do\\\" Activation Date\" is EMPTY",
+              "children": []
+            },
+            {
+              "id": "225869",
+              "component": "ACTION",
+              "parentId": "225868",
+              "schemaVersion": 5,
+              "type": "jira.issue.transition",
+              "value": {
+                "operations": [],
+                "advancedFields": null,
+                "sendNotifications": true,
+                "useLegacyRendering": false,
+                "transitionMode": "status",
+                "destinationStatus": {
+                  "type": "ID",
+                  "value": "10003"
+                },
+                "transitionMatch": "",
+                "transition": null,
+                "ignoreConditions": false
+              },
+              "children": []
+            }
+          ]
+        }
+      ],
+      "projects": [
+        {
+          "projectId": "10000",
+          "projectTypeKey": "software"
+        }
+      ],
+      "labels": []
+    }
+  ]
+}
