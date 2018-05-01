@@ -132,7 +132,7 @@
       "authorKey": "admin",
       "actorKey": "addon_com.codebarrel.addons.automation.lite",
       "created": 1521571659676,
-      "updated": 1525137797313,
+      "updated": 1525139081020,
       "trigger": {
         "id": "217905",
         "component": "TRIGGER",
@@ -215,7 +215,7 @@
               "parentId": "194731",
               "schemaVersion": 1,
               "type": "jira.jql.condition",
-              "value": "\"Recurrence Type\" = \"From activated date\"",
+              "value": "\"Recurrence Type\" = \"From activated date (see TODO-456)\"",
               "children": []
             },
             {
@@ -225,14 +225,7 @@
               "schemaVersion": 5,
               "type": "jira.issue.edit",
               "value": {
-                "operations": [
-                  {
-                    "fieldId": "customfield_10025",
-                    "fieldType": "com.atlassian.jira.plugin.system.customfieldtypes:datepicker",
-                    "type": "SET",
-                    "value": "{{#now}}func=plusDays(1){{/}}"
-                  }
-                ],
+                "operations": [],
                 "advancedFields": "",
                 "sendNotifications": false,
                 "useLegacyRendering": false
