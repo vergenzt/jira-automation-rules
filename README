@@ -1,0 +1,16 @@
+# jira-automation-rules
+# ---------------------
+#
+# Backups of my personal Automation for Jira rules to manage my own Jira-based todo list.
+#
+# To re-download and update this repo after changes:
+#
+# 1. "Export rules" from [Automation for Jira system dashboard][1].
+# 2. `./README` from this directory.
+#
+# [1]: https://vergenz.atlassian.net/plugins/servlet/ac/com.codebarrel.addons.automation.lite/cb-jira-automation-rules
+
+set -o errexit
+mv ~/Downloads/automation-rules*.json ./automation-rules-raw.json
+cat automation-rules-raw.json | jq . > automation-rules.json
+rm automation-rules-raw.json
