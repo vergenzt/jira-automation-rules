@@ -136,9 +136,9 @@
       "authorKey": "admin",
       "actorKey": "addon_com.codebarrel.addons.automation.lite",
       "created": 1521571659676,
-      "updated": 1525139081020,
+      "updated": 1526593822185,
       "trigger": {
-        "id": "217905",
+        "id": "270113",
         "component": "TRIGGER",
         "parentId": null,
         "conditionParentId": null,
@@ -163,7 +163,7 @@
       },
       "components": [
         {
-          "id": "194662",
+          "id": "270114",
           "component": "ACTION",
           "parentId": null,
           "conditionParentId": null,
@@ -194,6 +194,12 @@
                 "fieldType": "summary",
                 "type": "SET",
                 "value": "{{issue.summary}}"
+              },
+              {
+                "fieldId": "customfield_10025",
+                "fieldType": "com.atlassian.jira.plugin.system.customfieldtypes:datepicker",
+                "type": "SET",
+                "value": "{{#triggerIssue.fields.Resolved}}func=plusDays({{triggerIssue.Recurrence Days}}){{/}}"
               }
             ],
             "advancedFields": "{\n    \"update\": {\n        \"issuelinks\": [\n            {\n                \"add\": {\n                    \"type\": {\n                        \"name\": \"Recurrence\"\n                    },\n                    \"outwardIssue\": {\n                        \"key\": \"{{issue.key}}\"\n                    }\n                }\n            }\n        ]\n    }\n}",
@@ -204,7 +210,7 @@
           "conditions": []
         },
         {
-          "id": "194731",
+          "id": "270115",
           "component": "BRANCH",
           "parentId": null,
           "conditionParentId": null,
@@ -219,106 +225,9 @@
           },
           "children": [
             {
-              "id": "194894",
-              "component": "CONDITION",
-              "parentId": "194731",
-              "conditionParentId": null,
-              "schemaVersion": 1,
-              "type": "jira.jql.condition",
-              "value": "\"Recurrence Type\" = \"From activated date (see TODO-456)\"",
-              "children": [],
-              "conditions": []
-            },
-            {
-              "id": "194733",
+              "id": "270116",
               "component": "ACTION",
-              "parentId": "194731",
-              "conditionParentId": null,
-              "schemaVersion": 5,
-              "type": "jira.issue.edit",
-              "value": {
-                "operations": [],
-                "advancedFields": "",
-                "sendNotifications": false,
-                "useLegacyRendering": false
-              },
-              "children": [],
-              "conditions": []
-            }
-          ],
-          "conditions": []
-        },
-        {
-          "id": "194734",
-          "component": "BRANCH",
-          "parentId": null,
-          "conditionParentId": null,
-          "schemaVersion": 1,
-          "type": "jira.issue.related",
-          "value": {
-            "relatedType": "recentlycreated",
-            "jql": "",
-            "linkTypes": [],
-            "onlyUpdatedIssues": false,
-            "processIssuesInBulk": false
-          },
-          "children": [
-            {
-              "id": "194895",
-              "component": "CONDITION",
-              "parentId": "194734",
-              "conditionParentId": null,
-              "schemaVersion": 1,
-              "type": "jira.jql.condition",
-              "value": "\"Recurrence Type\" in (EMPTY, \"From resolved date\")",
-              "children": [],
-              "conditions": []
-            },
-            {
-              "id": "194736",
-              "component": "ACTION",
-              "parentId": "194734",
-              "conditionParentId": null,
-              "schemaVersion": 5,
-              "type": "jira.issue.edit",
-              "value": {
-                "operations": [
-                  {
-                    "fieldId": "customfield_10025",
-                    "fieldType": "com.atlassian.jira.plugin.system.customfieldtypes:datepicker",
-                    "type": "SET",
-                    "value": "{{#triggerIssue.fields.Resolved}}func=plusDays({{triggerIssue.Recurrence Days}}){{/}}"
-                  }
-                ],
-                "advancedFields": "",
-                "sendNotifications": false,
-                "useLegacyRendering": false
-              },
-              "children": [],
-              "conditions": []
-            }
-          ],
-          "conditions": []
-        },
-        {
-          "id": "225028",
-          "component": "BRANCH",
-          "parentId": null,
-          "conditionParentId": null,
-          "schemaVersion": 1,
-          "type": "jira.issue.related",
-          "value": {
-            "relatedType": "recentlycreated",
-            "jql": "",
-            "linkTypes": [],
-            "onlyUpdatedIssues": false,
-            "processIssuesInBulk": false
-          },
-          "children": [
-            {
-              "id": "225029",
-              "component": "ACTION",
-              "parentId": "225028",
+              "parentId": "270115",
               "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.edit",
