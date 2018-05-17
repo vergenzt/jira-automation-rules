@@ -17,6 +17,7 @@
         "id": "198089",
         "component": "TRIGGER",
         "parentId": null,
+        "conditionParentId": null,
         "schemaVersion": 2,
         "type": "jira.issue.field.changed",
         "value": {
@@ -31,13 +32,15 @@
           ],
           "actions": []
         },
-        "children": []
+        "children": [],
+        "conditions": []
       },
       "components": [
         {
           "id": "198090",
           "component": "ACTION",
           "parentId": null,
+          "conditionParentId": null,
           "schemaVersion": 5,
           "type": "jira.issue.create",
           "value": {
@@ -110,7 +113,8 @@
             "sendNotifications": false,
             "useLegacyRendering": false
           },
-          "children": []
+          "children": [],
+          "conditions": []
         }
       ],
       "projects": [
@@ -137,6 +141,7 @@
         "id": "217905",
         "component": "TRIGGER",
         "parentId": null,
+        "conditionParentId": null,
         "schemaVersion": 2,
         "type": "jira.issue.field.changed",
         "value": {
@@ -153,13 +158,15 @@
             "transition"
           ]
         },
-        "children": []
+        "children": [],
+        "conditions": []
       },
       "components": [
         {
           "id": "194662",
           "component": "ACTION",
           "parentId": null,
+          "conditionParentId": null,
           "schemaVersion": 5,
           "type": "jira.issue.clone",
           "value": {
@@ -193,12 +200,14 @@
             "sendNotifications": false,
             "useLegacyRendering": false
           },
-          "children": []
+          "children": [],
+          "conditions": []
         },
         {
           "id": "194731",
           "component": "BRANCH",
           "parentId": null,
+          "conditionParentId": null,
           "schemaVersion": 1,
           "type": "jira.issue.related",
           "value": {
@@ -213,15 +222,18 @@
               "id": "194894",
               "component": "CONDITION",
               "parentId": "194731",
+              "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
               "value": "\"Recurrence Type\" = \"From activated date (see TODO-456)\"",
-              "children": []
+              "children": [],
+              "conditions": []
             },
             {
               "id": "194733",
               "component": "ACTION",
               "parentId": "194731",
+              "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.edit",
               "value": {
@@ -230,14 +242,17 @@
                 "sendNotifications": false,
                 "useLegacyRendering": false
               },
-              "children": []
+              "children": [],
+              "conditions": []
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "194734",
           "component": "BRANCH",
           "parentId": null,
+          "conditionParentId": null,
           "schemaVersion": 1,
           "type": "jira.issue.related",
           "value": {
@@ -252,15 +267,18 @@
               "id": "194895",
               "component": "CONDITION",
               "parentId": "194734",
+              "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
               "value": "\"Recurrence Type\" in (EMPTY, \"From resolved date\")",
-              "children": []
+              "children": [],
+              "conditions": []
             },
             {
               "id": "194736",
               "component": "ACTION",
               "parentId": "194734",
+              "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.edit",
               "value": {
@@ -276,14 +294,17 @@
                 "sendNotifications": false,
                 "useLegacyRendering": false
               },
-              "children": []
+              "children": [],
+              "conditions": []
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "225028",
           "component": "BRANCH",
           "parentId": null,
+          "conditionParentId": null,
           "schemaVersion": 1,
           "type": "jira.issue.related",
           "value": {
@@ -298,6 +319,7 @@
               "id": "225029",
               "component": "ACTION",
               "parentId": "225028",
+              "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.edit",
               "value": {
@@ -313,9 +335,11 @@
                 "sendNotifications": false,
                 "useLegacyRendering": false
               },
-              "children": []
+              "children": [],
+              "conditions": []
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "projects": [
@@ -337,11 +361,12 @@
       "authorKey": "vergenzt+jiraadmin",
       "actorKey": "addon_com.codebarrel.addons.automation.lite",
       "created": 1524596534359,
-      "updated": 1524599295931,
+      "updated": 1526592513456,
       "trigger": {
-        "id": "224980",
+        "id": "270024",
         "component": "TRIGGER",
         "parentId": null,
+        "conditionParentId": null,
         "schemaVersion": 2,
         "type": "jira.issue.field.changed",
         "value": {
@@ -358,15 +383,19 @@
               "type": "field"
             }
           ],
-          "actions": []
+          "actions": [
+            "create"
+          ]
         },
-        "children": []
+        "children": [],
+        "conditions": []
       },
       "components": [
         {
-          "id": "224981",
+          "id": "270025",
           "component": "BRANCH",
           "parentId": null,
+          "conditionParentId": null,
           "schemaVersion": 1,
           "type": "jira.issue.related",
           "value": {
@@ -378,18 +407,21 @@
           },
           "children": [
             {
-              "id": "224982",
+              "id": "270026",
               "component": "CONDITION",
-              "parentId": "224981",
+              "parentId": "270025",
+              "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
               "value": "\"\\\"To Do\\\" Activation Date\" > now() OR \"\\\"Up Next\\\" Activation Date\" > now()",
-              "children": []
+              "children": [],
+              "conditions": []
             },
             {
-              "id": "224983",
+              "id": "270027",
               "component": "ACTION",
-              "parentId": "224981",
+              "parentId": "270025",
+              "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.transition",
               "value": {
@@ -406,14 +438,17 @@
                 "transition": null,
                 "ignoreConditions": false
               },
-              "children": []
+              "children": [],
+              "conditions": []
             }
-          ]
+          ],
+          "conditions": []
         },
         {
-          "id": "224984",
+          "id": "270028",
           "component": "BRANCH",
           "parentId": null,
+          "conditionParentId": null,
           "schemaVersion": 1,
           "type": "jira.issue.related",
           "value": {
@@ -425,18 +460,21 @@
           },
           "children": [
             {
-              "id": "224985",
+              "id": "270029",
               "component": "CONDITION",
-              "parentId": "224984",
+              "parentId": "270028",
+              "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
               "value": "\"\\\"To Do\\\" Activation Date\" <= now()",
-              "children": []
+              "children": [],
+              "conditions": []
             },
             {
-              "id": "224986",
+              "id": "270030",
               "component": "ACTION",
-              "parentId": "224984",
+              "parentId": "270028",
+              "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.transition",
               "value": {
@@ -453,14 +491,17 @@
                 "transition": null,
                 "ignoreConditions": false
               },
-              "children": []
+              "children": [],
+              "conditions": []
             }
-          ]
+          ],
+          "conditions": []
         },
         {
-          "id": "224987",
+          "id": "270031",
           "component": "BRANCH",
           "parentId": null,
+          "conditionParentId": null,
           "schemaVersion": 1,
           "type": "jira.issue.related",
           "value": {
@@ -472,18 +513,21 @@
           },
           "children": [
             {
-              "id": "224988",
+              "id": "270032",
               "component": "CONDITION",
-              "parentId": "224987",
+              "parentId": "270031",
+              "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
               "value": "\"\\\"Up Next\\\" Activation Date\" <= now()",
-              "children": []
+              "children": [],
+              "conditions": []
             },
             {
-              "id": "224989",
+              "id": "270033",
               "component": "ACTION",
-              "parentId": "224987",
+              "parentId": "270031",
+              "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.transition",
               "value": {
@@ -500,9 +544,11 @@
                 "transition": null,
                 "ignoreConditions": false
               },
-              "children": []
+              "children": [],
+              "conditions": []
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "projects": [
@@ -529,6 +575,7 @@
         "id": "225863",
         "component": "TRIGGER",
         "parentId": null,
+        "conditionParentId": null,
         "schemaVersion": 1,
         "type": "jira.jql.scheduled",
         "value": {
@@ -543,13 +590,15 @@
           "onlyUpdatedIssues": false,
           "processIssuesInBulk": false
         },
-        "children": []
+        "children": [],
+        "conditions": []
       },
       "components": [
         {
           "id": "225874",
           "component": "BRANCH",
           "parentId": null,
+          "conditionParentId": null,
           "schemaVersion": 1,
           "type": "jira.issue.related",
           "value": {
@@ -564,15 +613,18 @@
               "id": "225875",
               "component": "CONDITION",
               "parentId": "225874",
+              "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
               "value": "status != \"To Do\" AND \"\\\"To Do\\\" Activation Date\" <= now()",
-              "children": []
+              "children": [],
+              "conditions": []
             },
             {
               "id": "225876",
               "component": "ACTION",
               "parentId": "225874",
+              "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.transition",
               "value": {
@@ -589,14 +641,17 @@
                 "transition": null,
                 "ignoreConditions": false
               },
-              "children": []
+              "children": [],
+              "conditions": []
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "225866",
           "component": "BRANCH",
           "parentId": null,
+          "conditionParentId": null,
           "schemaVersion": 1,
           "type": "jira.issue.related",
           "value": {
@@ -611,15 +666,18 @@
               "id": "225877",
               "component": "CONDITION",
               "parentId": "225866",
+              "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
               "value": "status != \"Up Next\" AND \"\\\"Up Next\\\" Activation Date\" <= now()",
-              "children": []
+              "children": [],
+              "conditions": []
             },
             {
               "id": "225867",
               "component": "ACTION",
               "parentId": "225866",
+              "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.transition",
               "value": {
@@ -636,14 +694,17 @@
                 "transition": null,
                 "ignoreConditions": false
               },
-              "children": []
+              "children": [],
+              "conditions": []
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "225868",
           "component": "BRANCH",
           "parentId": null,
+          "conditionParentId": null,
           "schemaVersion": 1,
           "type": "jira.issue.related",
           "value": {
@@ -658,15 +719,18 @@
               "id": "225878",
               "component": "CONDITION",
               "parentId": "225868",
+              "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
               "value": "status = Waiting AND \"\\\"Up Next\\\" Activation Date\" is EMPTY AND \"\\\"To Do\\\" Activation Date\" is EMPTY",
-              "children": []
+              "children": [],
+              "conditions": []
             },
             {
               "id": "225869",
               "component": "ACTION",
               "parentId": "225868",
+              "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.transition",
               "value": {
@@ -683,9 +747,11 @@
                 "transition": null,
                 "ignoreConditions": false
               },
-              "children": []
+              "children": [],
+              "conditions": []
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "projects": [
