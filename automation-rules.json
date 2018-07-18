@@ -12,9 +12,9 @@
       "authorKey": "vergenzt+jiraadmin",
       "actorKey": "addon_com.codebarrel.addons.automation.lite",
       "created": 1521927225477,
-      "updated": 1524596646032,
+      "updated": 1527096039169,
       "trigger": {
-        "id": "198089",
+        "id": "299528",
         "component": "TRIGGER",
         "parentId": null,
         "conditionParentId": null,
@@ -37,7 +37,7 @@
       },
       "components": [
         {
-          "id": "198090",
+          "id": "299529",
           "component": "ACTION",
           "parentId": null,
           "conditionParentId": null,
@@ -117,12 +117,7 @@
           "conditions": []
         }
       ],
-      "projects": [
-        {
-          "projectId": "10000",
-          "projectTypeKey": "software"
-        }
-      ],
+      "projects": [],
       "labels": []
     },
     {
@@ -136,9 +131,9 @@
       "authorKey": "admin",
       "actorKey": "addon_com.codebarrel.addons.automation.lite",
       "created": 1521571659676,
-      "updated": 1526593822185,
+      "updated": 1527096053808,
       "trigger": {
-        "id": "270113",
+        "id": "299536",
         "component": "TRIGGER",
         "parentId": null,
         "conditionParentId": null,
@@ -163,7 +158,7 @@
       },
       "components": [
         {
-          "id": "270114",
+          "id": "299537",
           "component": "ACTION",
           "parentId": null,
           "conditionParentId": null,
@@ -210,7 +205,7 @@
           "conditions": []
         },
         {
-          "id": "270115",
+          "id": "299538",
           "component": "BRANCH",
           "parentId": null,
           "conditionParentId": null,
@@ -225,9 +220,9 @@
           },
           "children": [
             {
-              "id": "270116",
+              "id": "299539",
               "component": "ACTION",
-              "parentId": "270115",
+              "parentId": "299538",
               "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.edit",
@@ -251,12 +246,7 @@
           "conditions": []
         }
       ],
-      "projects": [
-        {
-          "projectId": "10000",
-          "projectTypeKey": "software"
-        }
-      ],
+      "projects": [],
       "labels": []
     },
     {
@@ -270,9 +260,9 @@
       "authorKey": "vergenzt+jiraadmin",
       "actorKey": "addon_com.codebarrel.addons.automation.lite",
       "created": 1524596534359,
-      "updated": 1526592513456,
+      "updated": 1527096061956,
       "trigger": {
-        "id": "270024",
+        "id": "299540",
         "component": "TRIGGER",
         "parentId": null,
         "conditionParentId": null,
@@ -301,7 +291,7 @@
       },
       "components": [
         {
-          "id": "270025",
+          "id": "299541",
           "component": "BRANCH",
           "parentId": null,
           "conditionParentId": null,
@@ -316,9 +306,9 @@
           },
           "children": [
             {
-              "id": "270026",
+              "id": "299542",
               "component": "CONDITION",
-              "parentId": "270025",
+              "parentId": "299541",
               "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
@@ -327,9 +317,9 @@
               "conditions": []
             },
             {
-              "id": "270027",
+              "id": "299543",
               "component": "ACTION",
-              "parentId": "270025",
+              "parentId": "299541",
               "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.transition",
@@ -354,7 +344,7 @@
           "conditions": []
         },
         {
-          "id": "270028",
+          "id": "299544",
           "component": "BRANCH",
           "parentId": null,
           "conditionParentId": null,
@@ -369,9 +359,9 @@
           },
           "children": [
             {
-              "id": "270029",
+              "id": "299545",
               "component": "CONDITION",
-              "parentId": "270028",
+              "parentId": "299544",
               "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
@@ -380,9 +370,9 @@
               "conditions": []
             },
             {
-              "id": "270030",
+              "id": "299546",
               "component": "ACTION",
-              "parentId": "270028",
+              "parentId": "299544",
               "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.transition",
@@ -407,7 +397,7 @@
           "conditions": []
         },
         {
-          "id": "270031",
+          "id": "299547",
           "component": "BRANCH",
           "parentId": null,
           "conditionParentId": null,
@@ -422,9 +412,9 @@
           },
           "children": [
             {
-              "id": "270032",
+              "id": "299548",
               "component": "CONDITION",
-              "parentId": "270031",
+              "parentId": "299547",
               "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
@@ -433,9 +423,9 @@
               "conditions": []
             },
             {
-              "id": "270033",
+              "id": "299549",
               "component": "ACTION",
-              "parentId": "270031",
+              "parentId": "299547",
               "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.transition",
@@ -460,12 +450,7 @@
           "conditions": []
         }
       ],
-      "projects": [
-        {
-          "projectId": "10000",
-          "projectTypeKey": "software"
-        }
-      ],
+      "projects": [],
       "labels": []
     },
     {
@@ -479,9 +464,9 @@
       "authorKey": "vergenzt+jiraadmin",
       "actorKey": "addon_com.codebarrel.addons.automation.lite",
       "created": 1524673957041,
-      "updated": 1524674440770,
+      "updated": 1528136054067,
       "trigger": {
-        "id": "225863",
+        "id": "372082",
         "component": "TRIGGER",
         "parentId": null,
         "conditionParentId": null,
@@ -504,7 +489,7 @@
       },
       "components": [
         {
-          "id": "225874",
+          "id": "372083",
           "component": "BRANCH",
           "parentId": null,
           "conditionParentId": null,
@@ -519,9 +504,9 @@
           },
           "children": [
             {
-              "id": "225875",
+              "id": "372084",
               "component": "CONDITION",
-              "parentId": "225874",
+              "parentId": "372083",
               "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
@@ -530,9 +515,9 @@
               "conditions": []
             },
             {
-              "id": "225876",
+              "id": "372085",
               "component": "ACTION",
-              "parentId": "225874",
+              "parentId": "372083",
               "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.transition",
@@ -557,7 +542,7 @@
           "conditions": []
         },
         {
-          "id": "225866",
+          "id": "372086",
           "component": "BRANCH",
           "parentId": null,
           "conditionParentId": null,
@@ -572,9 +557,9 @@
           },
           "children": [
             {
-              "id": "225877",
+              "id": "372087",
               "component": "CONDITION",
-              "parentId": "225866",
+              "parentId": "372086",
               "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
@@ -583,9 +568,9 @@
               "conditions": []
             },
             {
-              "id": "225867",
+              "id": "372088",
               "component": "ACTION",
-              "parentId": "225866",
+              "parentId": "372086",
               "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.transition",
@@ -610,7 +595,7 @@
           "conditions": []
         },
         {
-          "id": "225868",
+          "id": "372089",
           "component": "BRANCH",
           "parentId": null,
           "conditionParentId": null,
@@ -625,9 +610,9 @@
           },
           "children": [
             {
-              "id": "225878",
+              "id": "372090",
               "component": "CONDITION",
-              "parentId": "225868",
+              "parentId": "372089",
               "conditionParentId": null,
               "schemaVersion": 1,
               "type": "jira.jql.condition",
@@ -636,9 +621,9 @@
               "conditions": []
             },
             {
-              "id": "225869",
+              "id": "372091",
               "component": "ACTION",
-              "parentId": "225868",
+              "parentId": "372089",
               "conditionParentId": null,
               "schemaVersion": 5,
               "type": "jira.issue.transition",
@@ -663,12 +648,7 @@
           "conditions": []
         }
       ],
-      "projects": [
-        {
-          "projectId": "10000",
-          "projectTypeKey": "software"
-        }
-      ],
+      "projects": [],
       "labels": []
     }
   ]
